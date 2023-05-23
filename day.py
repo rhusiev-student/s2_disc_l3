@@ -2,21 +2,36 @@
 from automaton import Automaton, State
 
 
+class DayState(State):
+    """A state of the day.
+
+    Attributes:
+        name (str): The name of the state.
+        transitions (dict[str, str]): A dictionary of transitions in the form of
+        skip_hour (int): The number of hours to skip.
+    """
+
+    def __init__(self, name: str) -> None:
+        super().__init__(name)
+        self.skip_hour = 0
+
+
 class Day(Automaton):
     """A day represented using automaton.
 
     Attributes:
-        states (dict[str, State]): A dictionary of states in the form of {name: state}.
-        current_state (State): The current state.
+        states (dict[str, DayState]): A dictionary of states in the form of
+            {name: state}.
+        current_state (DayState): The current state.
         hour (int): The current hour of the day.
     """
 
-    def __init__(self, initial_state: State = State("sleeping")) -> None:
+    def __init__(self, initial_state: DayState = DayState("sleeping")) -> None:
         """Initialize MyLife.
 
         Args:
-            initial_state (State, optional): The initial state.
-                Defaults to State("sleeping").
+            initial_state (DayState, optional): The initial state.
+                Defaults to DayState("sleeping").
         """
         super().__init__()
         self.add_state(initial_state)
