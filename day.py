@@ -49,27 +49,30 @@ class Day(Automaton):
             f"'{transition}' - '{self.current_state[transition]}'"
             for transition in self.current_state.transitions.keys()
         )
-        transitions += "\n    None - 'next hour'"
+        transitions += "\n    None <=> 'next'"
         return f"""It's {self.hour} o'clock.
 I'm {self.current_state.name}.
 
 Possible transitions:
-{transitions}
+    {transitions}
 """
 
-    def next_hour(self, transition: str | None = None) -> None:
+    def next_hour(self, transition: str) -> None:
         """Move to the next hour of the day.
 
         Args:
-            transition (str, optional): The transition to take.
+            transition (str): The transition to take.
                 Defaults to None.
         """
-        if transition is not None:
-            self.hour += self.current_state.skip_hour
-            self.set_state(self.states[self.current_state[transition]])
+        self.hour += self.current_state.skip_hour
+        if transition:
+            if transition not in self.current_state.transitions:
+                print("There is no such transition.")
+                return
 
-        self.set_state(self.states[self.current_state["next hour"]])
-        self.hour += 1
+            self.set_state(self.states[self.current_state[transition]])
+        else:
+            self.set_state(self.states[self.current_state["next"]])
 
         if self.hour >= 22:
             self.end_of_day = True
@@ -85,4 +88,5 @@ Possible transitions:
             print(self)
             self.next_hour(input("What to do: "))
 
-        print("I'm going to sleep. The next day will be better.")
+        print("It's 22 o'clock. I'm going to sleep.")
+        print("The next day will be better.")
