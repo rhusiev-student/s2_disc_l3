@@ -11,9 +11,9 @@ class DayState(State):
         skip_hour (int): The number of hours to skip.
     """
 
-    def __init__(self, name: str) -> None:
+    def __init__(self, name: str, skip_hour: int = 0) -> None:
         super().__init__(name)
-        self.skip_hour = 0
+        self.skip_hour = skip_hour
 
 
 class Day(Automaton):
