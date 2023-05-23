@@ -84,7 +84,7 @@ class Automaton:
         """
         self.states[state_name].transitions[input_str] = next_state_name
 
-    def send(self, input: str | list[str]) -> None:
+    def make_transition(self, input: str | list[str]) -> None:
         """Send an input to the automaton.
 
         It can be a single input or a string of inputs.
