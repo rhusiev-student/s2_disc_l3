@@ -81,7 +81,7 @@ Possible transitions:
         given, just go to the next hour.
         """
         self.end_of_day = False
-        while self.hour < 24 and not self.end_of_day:
+        while not self.end_of_day:
             print(self)
             self.next_hour(input("What to do: "))
 
