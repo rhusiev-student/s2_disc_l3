@@ -8,6 +8,8 @@ class MyDay(Day):
     def __init__(self) -> None:
         """Initialize the automaton."""
         super().__init__()
+        self.add_my_states()
+        self.add_my_transitions()
 
     def add_my_states(self) -> None:
         """Add my day states."""
