@@ -1,7 +1,11 @@
 """My day represented using automaton."""
-from random import choice, randint
+import random
 
 from automaton import Automaton, State
+
+secure_random = random.SystemRandom()
+randint = secure_random.randint
+choice = secure_random.choice
 
 
 class DayState(State):
