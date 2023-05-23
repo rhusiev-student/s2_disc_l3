@@ -11,7 +11,7 @@ class DayState(State):
         skip_hour (int): The number of hours to skip.
     """
 
-    def __init__(self, name: str, skip_hour: int = 0) -> None:
+    def __init__(self, name: str, skip_hour: int = 1) -> None:
         super().__init__(name)
         self.skip_hour = skip_hour
 
@@ -33,7 +33,8 @@ class Day(Automaton):
             initial_state (DayState, optional): The initial state.
                 Defaults to DayState("sleeping").
         """
-        super().__init__()
+        self.states = {}
+        self.current_state: DayState
         self.add_state(initial_state)
         self.set_state(initial_state)
         self.hour = 6
@@ -64,10 +65,14 @@ Possible transitions:
                 Defaults to None.
         """
         if transition is not None:
+            self.hour += self.current_state.skip_hour
             self.set_state(self.states[self.current_state[transition]])
 
         self.set_state(self.states[self.current_state["next hour"]])
         self.hour += 1
+
+        if self.hour >= 24:
+            self.end_of_day = True
 
     def start_day(self) -> None:
         """Start the day.
@@ -75,7 +80,8 @@ Possible transitions:
         Start the loop of 24 hours. For each hour ask the user for an event. If none is
         given, just go to the next hour.
         """
-        while self.hour < 24:
+        self.end_of_day = False
+        while self.hour < 24 and not self.end_of_day:
             print(self)
             self.next_hour(input("What to do: "))
 
