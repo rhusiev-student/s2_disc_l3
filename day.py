@@ -46,6 +46,7 @@ class Day(Automaton):
         self.add_state(initial_state)
         self.set_state(initial_state)
         self.hour = 6
+        self.end_of_day = False
 
     def __str__(self) -> str:
         """Return a string representation of the current state of the day.
@@ -80,13 +81,22 @@ Possible transitions:
         """
         self.states[state_name].random_transitions[input_str] = next_state_name
 
-    def next_hour(self, transition: str) -> None:
+    def make_transition(self, transition: str | list[str]) -> None:
         """Move to the next hour of the day.
 
         Args:
-            transition (str): The transition to take.
-                Defaults to None.
+            transition (str | list[str]):
+                The transition(or multiple transitions) to make.
+
+        Raises:
+            TypeError: If transition is not a string(or a list of strings).
         """
+        if isinstance(transition, list):
+            for t in transition:
+                self.make_transition(t)
+
+            return
+
         self.hour += self.current_state.skip_hour
         if randint(0, 10) > 7 and self.current_state.random_transitions:
             transition = choice(list(self.current_state.random_transitions.keys()))
@@ -94,6 +104,10 @@ Possible transitions:
             print()
             print(f"Oops, a random event({transition}) happened!")
             print()
+
+            if not isinstance(transition, str):
+                raise TypeError("transition must be a string.")
+
             self.set_state(
                 self.states[self.current_state.random_transitions[transition]]
             )
@@ -139,7 +153,7 @@ There are also random some random events that can happen
 
         while not self.end_of_day:
             print(self)
-            self.next_hour(input("What to do: "))
+            self.make_transition(input("What to do: "))
 
         print()
         print("It's 22 o'clock. I'm going to sleep.")
