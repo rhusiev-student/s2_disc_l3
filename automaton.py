@@ -9,11 +9,19 @@ class State:
         name (str): The name of the state.
         transitions (dict[str, str]): A dictionary of transitions in the form of
             {input: next_state}.
+        random_transitions (dict[str, str]): A dictionary of random transitions in
+            the form of {input: next_state}.
+        description (str): A description of the state.
     """
 
-    def __init__(self, name: str) -> None:
+    def __init__(self, name: str, description: str | None = None) -> None:
         self.name = name
         self.transitions: dict[str, str] = {}
+        self.random_transitions: dict[str, str] = {}
+        if not description:
+            description = f"I'm {self.name}."
+
+        self.description = description
 
     def __repr__(self) -> str:
         """Return a string representation of the state.
