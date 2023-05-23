@@ -129,6 +129,8 @@ Possible transitions:
 You are given a state and possible actions(transitions) you can make from that state.
 You can always just type 'next' to go to the next event without doing anything.
 Sending an empty string will do the same as 'next'.
+
+There are also random some random events that can happen
 """
         )
         self.end_of_day = False
