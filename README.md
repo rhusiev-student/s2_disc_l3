@@ -29,110 +29,110 @@ See [diagram.html](./diagram.png) for a closer look
 
 ## Available transitions
 
-### `sleeping`
+### sleeping
 
-- `alarm` -> `reading_news`
-- `next` -> `oversleeping`
+- alarm -> reading_news
+- next -> oversleeping
 
-### `oversleeping`
+### oversleeping
 
-- `alarm` -> `day_ruined`
-- `next` -> `overoversleeping`
+- alarm -> day_ruined
+- next -> overoversleeping
 
-### `overoversleeping`
+### overoversleeping
 
-- `alarm` -> `day_ruined`
-- `next` -> `overoveroversleeping`
+- alarm -> day_ruined
+- next -> overoveroversleeping
 
-### `overoveroversleeping`
+### overoveroversleeping
 
-- `alarm` -> `day_ruined`
-- `next` -> `overoveroveroversleeping`
+- alarm -> day_ruined
+- next -> overoveroveroversleeping
 
-### `overoveroveroversleeping`
+### overoveroveroversleeping
 
-- `alarm` -> `day_ruined`
-- `next` -> `day_ruined`
+- alarm -> day_ruined
+- next -> day_ruined
 
-### `reading_news`
+### reading_news
 
-- `next` -> `eating_breakfast`
+- next -> eating_breakfast
 
-### `eating_breakfast`
+### eating_breakfast
 
-- `next` -> `walking_to_class`
+- next -> walking_to_class
 
-### `walking_to_class`
+### walking_to_class
 
-- `next` -> `having_class`
-- `no_time` -> `commuting`
+- next -> having_class
+- no_time -> commuting
 
-### `commuting`
+### commuting
 
-- `next` -> `having_class`
-- `no_bus` -> `day_ruined`
+- next -> having_class
+- no_bus -> day_ruined
 
-### `having_class`
+### having_class
 
-- `next` -> `eating_lunch`
+- next -> eating_lunch
 
-### `eating_lunch`
+### eating_lunch
 
-- `next` -> `studying`
-- `long_queue` -> `studying_hungry`
+- next -> studying
+- long_queue -> studying_hungry
 
-### `studying_hungry`
+### studying_hungry
 
-- `next` -> `eating_lunch_after_queue`
+- next -> eating_lunch_after_queue
 
-### `eating_lunch_after_queue`
+### eating_lunch_after_queue
 
-- `next` -> `studying_after_being_hungry`
+- next -> studying_after_being_hungry
 
-### `studying`
+### studying
 
-- `next` -> `walking_from_class`
-- `too_much_homework` -> `day_ruined`
-- `sudden_desire_for_side_project` -> `doing_side_project`
+- next -> walking_from_class
+- too_much_homework -> day_ruined
+- sudden_desire_for_side_project -> doing_side_project
 
-### `studying_after_being_hungry`
+### studying_after_being_hungry
 
-- `next` -> `walking_from_class`
-- `too_much_homework` -> `day_ruined`
+- next -> walking_from_class
+- too_much_homework -> day_ruined
 
-### `doing_side_project`
+### doing_side_project
 
-- `next` -> `walking_from_class_after_side_project`
+- next -> walking_from_class_after_side_project
 
-### `walking_from_class`
+### walking_from_class
 
-- `next` -> `eating_dinner`
+- next -> eating_dinner
 
-### `walking_from_class_after_side_project`
+### walking_from_class_after_side_project
 
-- `next` -> `eating_dinner_after_side_project`
+- next -> eating_dinner_after_side_project
 
-### `eating_dinner`
+### eating_dinner
 
-- `next` -> `watching_youtube`
-- `friend_invites` -> `playing_games`
+- next -> watching_youtube
+- friend_invites -> playing_games
 
-### `eating_dinner_after_side_project`
+### eating_dinner_after_side_project
 
-- `next` -> `studying_after_dinner`
+- next -> studying_after_dinner
 
-### `studying_after_dinner`
+### studying_after_dinner
 
-- `next` -> `sleeping`
+- next -> sleeping
 
-### `watching_youtube`
+### watching_youtube
 
-- `next` -> `sleeping`
+- next -> sleeping
 
-### `playing_games`
+### playing_games
 
-- `next` -> `sleeping`
+- next -> sleeping
 
-### `day_ruined`
+### day_ruined
 
-- `next` -> `sleeping`
+- next -> sleeping
