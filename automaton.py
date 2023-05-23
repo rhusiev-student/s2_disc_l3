@@ -64,15 +64,17 @@ class Automaton:
         """
         self.states[state.name] = state
 
-    def add_transition(self, state: State, input: str, next_state: State) -> None:
+    def add_transition(
+        self, state_name: str, input_str: str, next_state_name: str
+    ) -> None:
         """Add a transition to the automaton.
 
         Args:
-            state (State): The state to add the transition to.
-            input (str): The input to transition on.
-            next_state (State): The next state.
+            state_name (str): The name of the state to transition from.
+            input_str (str): The input to transition on.
+            next_state_name (str): The name of the state to transition to.
         """
-        state.transitions[input] = next_state.name
+        self.states[state_name].transitions[input_str] = next_state_name
 
     def send(self, input: str | list[str]) -> None:
         """Send an input to the automaton.
