@@ -71,7 +71,7 @@ Possible transitions:
         self.set_state(self.states[self.current_state["next hour"]])
         self.hour += 1
 
-        if self.hour >= 24:
+        if self.hour >= 22:
             self.end_of_day = True
 
     def start_day(self) -> None:
